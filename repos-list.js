@@ -3,8 +3,9 @@ template.innerHTML = `
 <style>
 @import "./css/styles.css"
 </style>
-<section>
-  <header></header>
+<div>
+  <h3 id="header" class="header"></h3>
+  <span id="error-mssg" class="hidden"></span>
   <table>
     <tr>
       <th>Names</th>
@@ -13,7 +14,7 @@ template.innerHTML = `
       <th>Link</th>
     </tr>
   </table>
-</section>
+</div>
 `;
 
 class ReposList extends HTMLElement {
@@ -23,7 +24,8 @@ class ReposList extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this.$mainContainer = this._shadowRoot.querySelector("div");
     this.$table = this._shadowRoot.querySelector("table");
-    this.$header = this._shadowRoot.querySelector("header");
+    this.$header = this._shadowRoot.querySelector("h3");
+    this.$errorMssg = this._shadowRoot.querySelector("span");
   }
 
   connectedCallback() {}
@@ -31,7 +33,12 @@ class ReposList extends HTMLElement {
   fetchData() {
     fetch(`https://api.github.com/users/${this.user}/repos?sort=updated`)
       .then(response => response.json())
-      .then(data => this.tableRender(data));
+      .then(data => this.tableRender(data))
+      .catch(err => {
+        this.$errorMssg.innerHTML = err;
+        this.$table.classList.add("hidden");
+        this.$errorMssg.classList = ["error-mssg"];
+      });
   }
 
   tableRender(data) {
