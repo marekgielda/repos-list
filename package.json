@@ -1,0 +1,30 @@
+{
+  "name": "user-repositories-list",
+  "version": "1.0.0",
+  "description": "Web component for listing the Github's repositories of a user",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marekgielda/user-repositories-list.git"
+  },
+  "keywords": [
+    "web-component",
+    "repositories",
+    "list",
+    "user"
+  ],
+  "author": "Marek Giełda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marekgielda/user-repositories-list/issues"
+  },
+  "homepage": "https://github.com/marekgielda/user-repositories-list#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  },
+  "dependencies": {}
+}
