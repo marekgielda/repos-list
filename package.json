@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/marekgielda/user-repositories-list#readme",
   "devDependencies": {
-    "node-sass": "^4.13.1"
+    "node-sass": "^7.0.0"
   },
   "dependencies": {}
 }
